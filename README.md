@@ -6,7 +6,7 @@ The resources/services/activations/deletions that this module will create/trigge
 
 - Create a Autopilot GKE Cluster
 - Creates an isolated VPC with dedicated subnets 
-- Update project IAM policy
+- Update project IAM policy to add Kubernetes Service Account
 
 ## Creditial Flow
 ![Reference Architecture](diagram/workload-identity-token-flow.svg)
@@ -83,6 +83,8 @@ terraform apply
 kubectl exec -it workload-identity  -- /bin/bash
 curl -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" \
 "https://storage.googleapis.com/storage/v1/b/Any_bucket_in_project/o
+
+
 
 ```
 
