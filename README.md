@@ -95,14 +95,22 @@ curl -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" \
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| bucket\_name | The name of the bucket to create | `string` | n/a | yes |
-| project\_id | The project ID to deploy to | `string` | n/a | yes |
+| cloud\_shell\_ip | Cloud Shell IP: dig +short myip.opendns.com @resolver1.opendns.com | `any` | n/a | yes |
+| project\_id | The project ID to host the cluster in | `any` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| bucket\_name | Name of the bucket |
+| cluster\_name | Cluster name |
+| kubernetes\_endpoint | The cluster endpoint |
+| location | n/a |
+| master\_kubernetes\_version | Kubernetes version of the master |
+| network\_name | The name of the VPC being created |
+| region | The region in which the cluster resides |
+| service\_account | The service account to default running nodes as if not overridden in `node_pools`. |
+| subnet\_names | The names of the subnet being created |
+| zones | List of zones in which the cluster resides |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -122,31 +130,13 @@ The following dependencies must be available:
 A service account with the following roles must be used to provision
 the resources of this module:
 
-- Storage Admin: `roles/storage.admin`
-
-The [Project Factory module][project-factory-module] and the
-[IAM module][iam-module] may be used in combination to provision a
-service account with the necessary roles applied.
+- Compute Admin: `roles/compute.admin`
+- Kubernetes Admin: `
 
 ### APIs
 
-A project with the following APIs enabled must be used to host the
-resources of this module:
-
-- Google Cloud Storage JSON API: `storage-api.googleapis.com`
-
-The [Project Factory module][project-factory-module] can be used to
-provision a project with the necessary APIs enabled.
-
-## Contributing
-
-Refer to the [contribution guidelines](./CONTRIBUTING.md) for
-information on contributing to this module.
-
-[iam-module]: https://registry.terraform.io/modules/terraform-google-modules/iam/google
-[project-factory-module]: https://registry.terraform.io/modules/terraform-google-modules/project-factory/google
-[terraform-provider-gcp]: https://www.terraform.io/docs/providers/google/index.html
-[terraform]: https://www.terraform.io/downloads.html
+- Google Cloud Compute: `compute.googleapis.com`
+- Google Cloud Compute: `compute.googleapis.com`
 
 ## Security Disclosures
 
