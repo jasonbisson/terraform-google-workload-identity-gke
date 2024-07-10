@@ -131,12 +131,13 @@ A service account with the following roles must be used to provision
 the resources of this module:
 
 - Compute Admin: `roles/compute.admin`
-- Kubernetes Admin: `
+- Kubernetes Admin: `roles/container.admin`
 
 ### APIs
 
 - Google Cloud Compute: `compute.googleapis.com`
-- Google Cloud Compute: `compute.googleapis.com`
+- Kubernetes Engine: `container.googleapis.com`
+-
 
 ## Security Disclosures
 
