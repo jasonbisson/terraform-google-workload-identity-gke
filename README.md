@@ -11,7 +11,7 @@ The resources/services/activations/deletions that this module will create/trigge
 ### PreDeploy
 To deploy this blueprint you must have an active billing account and billing permissions.
 
-## Demo Architecture
+## Creditial Flow
 ![Reference Architecture](diagram/workload-identity-token-flow.svg)
 
 ## Documentation
