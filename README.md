@@ -68,6 +68,8 @@ spec:
     name: workload-identity
     command: ["sleep","infinity"]
   serviceAccountName: workload-identity-sa
+  nodeSelector:
+    iam.gke.io/gke-metadata-server-enabled: "true"
 EOF
 ```
 
